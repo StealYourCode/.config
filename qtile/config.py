@@ -27,11 +27,6 @@ from libqtile.dgroups import simple_key_binder
 from pathlib import Path
 from libqtile.log_utils import logger
 
-from qtile_extras import widget
-from qtile_extras.widget.decorations import RectDecoration
-from qtile_extras.widget.decorations import PowerLineDecoration
-
-
 
 # --------------------------------------------------------
 # Your configuration
@@ -201,19 +196,19 @@ extension_defaults = widget_defaults.copy()
 # Screens
 # --------------------------------------------------------
 
-screens = [
-    Screen(
-        top=bar.Bar(
-            widget_list,
-            30,
-            padding=20,
-            opacity=0.7,
-            border_width=[0, 0, 0, 0],
-            margin=[0,0,0,0],
-            background="#000000.3"
-        ),
-    ),
-]
+#screens = [
+#    Screen(
+#        top=bar.Bar(
+#            widget_list,
+#            30,
+#            padding=20,
+#            opacity=0.7,
+#            border_width=[0, 0, 0, 0],
+#            margin=[0,0,0,0],
+#            background="#000000.3"
+#        ),
+#    ),
+#]
 
 
 
@@ -235,7 +230,7 @@ mouse = [
 
 floating_layout = layout.Floating(
     border_width=3,
-    border_focus=Color2,
+    border_focus="#194D33",
     border_normal="FFFFFF",
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
