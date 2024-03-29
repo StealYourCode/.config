@@ -1,2 +1,2 @@
 # .config
-My .config files
+My .config files for Arch
