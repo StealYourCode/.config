@@ -10,10 +10,16 @@
 # Fork of https://gitlab.com/stephan-raabe/dotfiles/-/blob/main/qtile/autostart.sh?ref_type=heads
 
 # My screen resolution
-# xrandr --rate 60
+ xrandr --output VGA-1 --mode 1920x1080
 
 # Keyboard layout
 setxkbmap be
 
 # Load picom
 picom &
+
+# Set Wallpaper
+~/.fehbg &
+
+# Set termianl Colors
+wal -R
