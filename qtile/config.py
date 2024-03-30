@@ -156,6 +156,27 @@ groups = [
 dgroupskey_binder = simple_key_binder(mod)
 
 
+
+# --------------------------------------------------------
+# Scratchpads
+# --------------------------------------------------------
+
+groups.append(ScratchPad("6", [
+    DropDown("chatgpt", "firefox --app=https://chat.openai.com", x=0.3, y=0.1, width=0.40, height=0.4, on_focus_lost_hide=False ),
+    DropDown("mousepad", "mousepad", x=0.3, y=0.1, width=0.40, height=0.4, on_focus_lost_hide=False ),
+    DropDown("terminal", "kitty", x=0.3, y=0.1, width=0.40, height=0.4, on_focus_lost_hide=False ),
+    DropDown("scrcpy", "scrcpy -d", x=0.8, y=0.05, width=0.15, height=0.6, on_focus_lost_hide=False )
+]))
+
+keys.extend([
+    Key([mod], 'F10', lazy.group["6"].dropdown_toggle("chatgpt")),
+    Key([mod], 'F11', lazy.group["6"].dropdown_toggle("mousepad")),
+    Key([mod], 'F12', lazy.group["6"].dropdown_toggle("terminal")),
+    Key([mod], 'F9', lazy.group["6"].dropdown_toggle("scrcpy"))
+])
+
+
+
 # --------------------------------------------------------
 # Layouts
 # --------------------------------------------------------
@@ -186,9 +207,52 @@ layouts = [
 widget_defaults = dict(
     font="sans",
     fontsize=14,
-    padding=3,
+    padding=3
 )
 extension_defaults = widget_defaults.copy()
+
+
+
+# --------------------------------------------------------
+# Widgets
+# --------------------------------------------------------
+
+widget_list = [
+    widget.TextBox(
+        background="151716",text="Apps",foreground="ffffff",padding=10,mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("rofi -show drun")},
+    ),
+    widget.TextBox(
+        background="000000",text="Browser",foreground="ffffff",padding=10,mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("sh firefox")},
+    ),
+     widget.TextBox(
+        background="000000",text="Files",foreground="ffffff",padding=10,mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("thunar")},
+    ),
+    widget.WindowName(
+        max_chars=50,
+        background="000000"+".4",
+        width=400,
+        padding=10
+    ),
+    widget.Spacer(lenght=15
+    ),
+    widget.GroupBox(
+        background="#ffffff",highlight_method='block',highlight='ffffff',block_border='ffffff',highlight_color=['ffffff','ffffff'],block_highlight_text_color='000000',foreground='ffffff',rounded=True,this_current_screen_border='ffffff',active='ffffff',
+    ),
+    widget.Spacer(lenght=15
+    ),
+    widget.TextBox(
+        background="000000",text='Network',foreground='ffffff',padding=10,
+    ),
+    widget.Clock(
+        background="000000",padding=10,format="%d-%m-%Y / %H:%M %p",
+    ),
+    widget.TextBox(
+        background="000000",text='Power',foreground='ffffff',padding=10,
+    ),
+
+
+
+]
 
 
 
@@ -196,19 +260,19 @@ extension_defaults = widget_defaults.copy()
 # Screens
 # --------------------------------------------------------
 
-#screens = [
-#    Screen(
-#        top=bar.Bar(
-#            widget_list,
-#            30,
-#            padding=20,
-#            opacity=0.7,
-#            border_width=[0, 0, 0, 0],
-#            margin=[0,0,0,0],
-#            background="#000000.3"
-#        ),
-#    ),
-#]
+screens = [
+    Screen(
+        top=bar.Bar(
+            widget_list,
+            30,
+            padding=20,
+            opacity=0.7,
+            border_width=[0, 0, 0, 0],
+            margin=[0,0,0,0],
+            background="#000000.3"
+        ),
+    ),
+]
 
 
 
