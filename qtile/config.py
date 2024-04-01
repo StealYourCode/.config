@@ -265,13 +265,16 @@ extension_defaults = widget_defaults.copy()
 
 widget_list = [
     widget.TextBox(
-        background=Color1+".4",text="Apps",foreground="ffffff",padding=10,mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("rofi -show drun")},
+        background=Color1+".4",text="",foreground="ffffff",padding=10,mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("kitty")},
     ),
     widget.TextBox(
-        background=Color1+".4",text="Browser",foreground="ffffff",padding=10,mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("sh firefox")},
+        background=Color1+".4",text="",foreground="ffffff",padding=10,mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("rofi -show drun")},
+    ),
+    widget.TextBox(
+        background=Color1+".4",text="",foreground="ffffff",padding=10,mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("sh firefox")},
     ),
      widget.TextBox(
-        background=Color1+".4",text="Files",foreground="ffffff",padding=10,mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("thunar")},
+	background=Color1+".4",text="",foreground="ffffff",padding=10,mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("thunar")},
     ),
     widget.WindowName(
         max_chars=50,background=Color1+".4",width=400,padding=10
@@ -284,16 +287,16 @@ widget_list = [
     widget.Spacer(lenght=15
     ),
     widget.TextBox(
-	background=Color1+".4",text="☐",foreground="ffffff",padding=10,mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("wal -i /usr/share/wallpapers/")},
+	background=Color1+".4",text="",foreground="ffffff",padding=10,mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("wal -i /usr/share/wallpapers/")},
     ),
     widget.TextBox(
-        background=Color1+".4",text='Network',foreground='ffffff',padding=10,
+        background=Color1+".4",text='',foreground='ffffff',padding=10,
     ),
     widget.Clock(
         background=Color1+".4",padding=10,format="%d-%m-%Y / %H:%M %p",
     ),
     widget.TextBox(
-        background=Color1+".4",text='Power',foreground='ffffff',padding=10,
+        background=Color1+".4",text='',foreground='ffffff',padding=10,
     ),
 
 
