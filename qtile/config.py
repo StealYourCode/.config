@@ -276,6 +276,15 @@ widget_list = [
      widget.TextBox(
 	background=Color1+".4",text="",foreground="ffffff",padding=10,mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("thunar")},
     ),
+    widget.TextBox(
+	background=Color1+".4",text="",foreground="ffffff",padding=10,mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("teams")},
+    ),
+    widget.TextBox(
+        background=Color1+".4",text="",foreground="ffffff",padding=10,mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("discord")},
+    ),
+    widget.TextBox(
+        background=Color1+".4",text="",foreground="ffffff",padding=10,mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("chromium --app=https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://mail.google.com/mail/u/0/&ved=2ahUKEwiBkOuG0aGFAxUwUqQEHT6oCQUQFnoECBoQAQ&usg=AOvVaw1GRqnzaEzJ-JntPiR5Sc98")},
+    ),
     widget.WindowName(
         max_chars=50,background=Color1+".4",width=400,padding=10
     ),
@@ -296,7 +305,7 @@ widget_list = [
         background=Color1+".4",padding=10,format="%d-%m-%Y / %H:%M %p",
     ),
     widget.TextBox(
-        background=Color1+".4",text='',foreground='ffffff',padding=10,
+        background=Color1+".4",text='',foreground='ffffff',padding=10,mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(home + "/.config/qtile/script/power.sh")}
     ),
 
 
@@ -405,4 +414,3 @@ def autostart():
     autostartscript = "~/.config/qtile/autostart.sh"
     home = os.path.expanduser(autostartscript)
     subprocess.Popen([home])
-
