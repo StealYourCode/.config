@@ -83,11 +83,11 @@ keys = [
     Key([mod, "shift"], "Down", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([mod, "shift"], "Up", lazy.layout.shuffle_up(), desc="Move window up"),
 
-    # will be to screen edge - window would shrink.
-    Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
-    Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
-    Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
-    Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
+    # Size
+    Key([mod, "control"], "Left", lazy.layout.grow_left(), desc="Grow window to the left"),
+    Key([mod, "control"], "Right", lazy.layout.grow_right(), desc="Grow window to the right"),
+    Key([mod, "control"], "Down", lazy.layout.grow_down(), desc="Grow window down"),
+    Key([mod, "control"], "Up", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
 
     # Toggle between split and unsplit sides of stack.
@@ -104,8 +104,14 @@ keys = [
     # Start Terminal
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
 
-    # Toggle between different layouts as defined below
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
+    # Toggle Workspace
+    Key([mod], "Tab", lazy.screen.next_group(), desc="Toggle between workspaces/groups"),
+
+    # Toggle between active groups
+    Key([mod, "shift"], "Tab", lazy.screen.toggle_group(), desc="Toggle between active groups"),
+
+    # Toggle layouts
+    Key([mod, "control"], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
 
     # Kill
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
@@ -142,6 +148,46 @@ for vt in range(1, 8):
 
 
 # --------------------------------------------------------
+# Pywal Colors
+# --------------------------------------------------------
+
+colors = os.path.expanduser('~/.cache/wal/colors.json')
+colordict = json.load(open(colors))
+Color0=(colordict['colors']['color0'])
+Color1=(colordict['colors']['color1'])
+Color2=(colordict['colors']['color2'])
+Color3=(colordict['colors']['color3'])
+Color4=(colordict['colors']['color4'])
+Color5=(colordict['colors']['color5'])
+Color6=(colordict['colors']['color6'])
+Color7=(colordict['colors']['color7'])
+Color8=(colordict['colors']['color8'])
+Color9=(colordict['colors']['color9'])
+Color10=(colordict['colors']['color10'])
+Color11=(colordict['colors']['color11'])
+Color12=(colordict['colors']['color12'])
+Color13=(colordict['colors']['color13'])
+Color14=(colordict['colors']['color14'])
+Color15=(colordict['colors']['color15'])
+
+
+
+
+# --------------------------------------------------------
+# Setup Layout Theme
+# --------------------------------------------------------
+
+layout_theme = { 
+    "border_width": 3,
+    "margin": 15,
+    "border_focus": "Color2",
+    "border_normal": "FFFFFF",
+    "single_border_width": 3
+}
+
+
+
+# --------------------------------------------------------
 # Groups
 # --------------------------------------------------------
 
@@ -162,7 +208,7 @@ dgroupskey_binder = simple_key_binder(mod)
 # --------------------------------------------------------
 
 groups.append(ScratchPad("6", [
-    DropDown("chatgpt", "firefox --app=https://chat.openai.com", x=0.3, y=0.1, width=0.40, height=0.4, on_focus_lost_hide=False ),
+    DropDown("chatgpt", "chromium --app=https://chat.openai.com", x=0.3, y=0.1, width=0.40, height=0.4, on_focus_lost_hide=False ),
     DropDown("mousepad", "mousepad", x=0.3, y=0.1, width=0.40, height=0.4, on_focus_lost_hide=False ),
     DropDown("terminal", "kitty", x=0.3, y=0.1, width=0.40, height=0.4, on_focus_lost_hide=False ),
     DropDown("scrcpy", "scrcpy -d", x=0.8, y=0.05, width=0.15, height=0.6, on_focus_lost_hide=False )
@@ -219,35 +265,35 @@ extension_defaults = widget_defaults.copy()
 
 widget_list = [
     widget.TextBox(
-        background="151716",text="Apps",foreground="ffffff",padding=10,mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("rofi -show drun")},
+        background=Color1+".4",text="Apps",foreground="ffffff",padding=10,mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("rofi -show drun")},
     ),
     widget.TextBox(
-        background="000000",text="Browser",foreground="ffffff",padding=10,mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("sh firefox")},
+        background=Color1+".4",text="Browser",foreground="ffffff",padding=10,mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("sh firefox")},
     ),
      widget.TextBox(
-        background="000000",text="Files",foreground="ffffff",padding=10,mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("thunar")},
+        background=Color1+".4",text="Files",foreground="ffffff",padding=10,mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("thunar")},
     ),
     widget.WindowName(
-        max_chars=50,
-        background="000000"+".4",
-        width=400,
-        padding=10
+        max_chars=50,background=Color1+".4",width=400,padding=10
     ),
     widget.Spacer(lenght=15
     ),
     widget.GroupBox(
-        background="#ffffff",highlight_method='block',highlight='ffffff',block_border='ffffff',highlight_color=['ffffff','ffffff'],block_highlight_text_color='000000',foreground='ffffff',rounded=True,this_current_screen_border='ffffff',active='ffffff',
+        background=Color1+".4",highlight_method='block',highlight='ffffff',block_border='ffffff',highlight_color=['ffffff','ffffff'],block_highlight_text_color='000000',foreground='ffffff',rounded=True,this_current_screen_border='ffffff',active='ffffff',
     ),
     widget.Spacer(lenght=15
     ),
     widget.TextBox(
-        background="000000",text='Network',foreground='ffffff',padding=10,
-    ),
-    widget.Clock(
-        background="000000",padding=10,format="%d-%m-%Y / %H:%M %p",
+	background=Color1+".4",text="☐",foreground="ffffff",padding=10,mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("wal -i /usr/share/wallpapers/")},
     ),
     widget.TextBox(
-        background="000000",text='Power',foreground='ffffff',padding=10,
+        background=Color1+".4",text='Network',foreground='ffffff',padding=10,
+    ),
+    widget.Clock(
+        background=Color1+".4",padding=10,format="%d-%m-%Y / %H:%M %p",
+    ),
+    widget.TextBox(
+        background=Color1+".4",text='Power',foreground='ffffff',padding=10,
     ),
 
 
@@ -269,7 +315,7 @@ screens = [
             opacity=0.7,
             border_width=[0, 0, 0, 0],
             margin=[0,0,0,0],
-            background="#000000.3"
+            background=Color1+".1"
         ),
     ),
 ]
