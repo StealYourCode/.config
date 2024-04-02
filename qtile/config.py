@@ -106,12 +106,14 @@ keys = [
 
     # Toggle Workspace
     Key([mod], "Tab", lazy.screen.next_group(), desc="Toggle between workspaces/groups"),
+    Key([mod, "control"], "Tab", lazy.screen.prev_group(), desc="Toggle between workspaces/group"),
+
 
     # Toggle between active groups
     Key([mod, "shift"], "Tab", lazy.screen.toggle_group(), desc="Toggle between active groups"),
 
     # Toggle layouts
-    Key([mod, "control"], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
+    Key([mod, "control"], "l", lazy.next_layout(), desc="Toggle between layouts"),
 
     # Kill
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
