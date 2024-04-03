@@ -301,13 +301,13 @@ widget_list = [
 	background=Color1+".4",text="",foreground="ffffff",padding=10,mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("wal -i /usr/share/wallpapers/")},
     ),
     widget.TextBox(
-        background=Color1+".4",text='',foreground='ffffff',padding=10,
+        background=Color1+".4",text='',foreground='ffffff',padding=10,mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("nm-connection-editor")},
     ),
     widget.Clock(
         background=Color1+".4",padding=10,format="%d-%m-%Y / %H:%M %p",
     ),
     widget.TextBox(
-        background=Color1+".4",text='',foreground='ffffff',padding=10,mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(home + "/.config/qtile/script/power.sh")}
+        background=Color1+".4",text='',foreground='ffffff',padding=10,mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(home + "/.config/qtile/script/power.sh")},
     ),
 
 
