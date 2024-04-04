@@ -14,7 +14,7 @@ import socket
 import subprocess
 import psutil
 import json
-from libqtile import hook
+from libqtile import hook, layout
 from libqtile import qtile
 from typing import List  
 from libqtile import bar, layout, widget
@@ -111,6 +111,10 @@ keys = [
 
     # Toggle between active groups
     Key([mod, "shift"], "Tab", lazy.screen.toggle_group(), desc="Toggle between active groups"),
+
+    # Move focused window to a specific group (change the index accordingly)
+    Key([mod, "shift"], "KP_1", lazy.window.togroup("1")),  # Moves focused window to group 1
+    Key([mod, "shift"], "KP_2", lazy.window.togroup("2")),  # Moves focused window to group 2
 
     # Toggle layouts
     Key([mod, "control"], "l", lazy.next_layout(), desc="Toggle between layouts"),
