@@ -14,7 +14,7 @@ import socket
 import subprocess
 import psutil
 import json
-from libqtile import hook, layout
+from libqtile import hook
 from libqtile import qtile
 from typing import List  
 from libqtile import bar, layout, widget
@@ -112,9 +112,20 @@ keys = [
     # Toggle between active groups
     Key([mod, "shift"], "Tab", lazy.screen.toggle_group(), desc="Toggle between active groups"),
 
-    # Move focused window to a specific group (change the index accordingly)
-    Key([mod, "shift"], "KP_1", lazy.window.togroup("1")),  # Moves focused window to group 1
-    Key([mod, "shift"], "KP_2", lazy.window.togroup("2")),  # Moves focused window to group 2
+
+    # Move you to a specific group (qtile doesn't support french characters so using keysyms values for keys)
+    Key([mod], "ampersand", lazy.group["1"].toscreen()),
+    Key([mod], "eacute", lazy.group["2"].toscreen()),
+    Key([mod], "quotedbl", lazy.group["3"].toscreen()),
+    Key([mod], "apostrophe", lazy.group["4"].toscreen()),
+    Key([mod], "parenleft", lazy.group["5"].toscreen()),
+
+    # Move focused window to a specific group (qtile doesn't support french characters so using keysyms values for keys)
+    Key([mod, "shift"], "ampersand", lazy.window.togroup("1")),
+    Key([mod, "shift"], "eacute", lazy.window.togroup("2")),
+    Key([mod, "shift"], "quotedbl", lazy.window.togroup("3")),
+    Key([mod, "shift"], "apostrophe", lazy.window.togroup("4")),
+    Key([mod, "shift"], "parenleft", lazy.window.togroup("5")),
 
     # Toggle layouts
     Key([mod, "control"], "l", lazy.next_layout(), desc="Toggle between layouts"),
