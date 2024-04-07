@@ -5,9 +5,8 @@
 # | |_| || |  | || |___| |___   ___) | || (_| | |  | |_  
 #  \__\_\|_| |___|_____|_____| |____/ \__\__,_|_|   \__| 
 #                                                        
-#  
+#  Fork of https://gitlab.com/stephan-raabe/dotfiles/-/blob/main/qtile/autostart.sh?ref_type=heads
 # ----------------------------------------------------- 
-# Fork of https://gitlab.com/stephan-raabe/dotfiles/-/blob/main/qtile/autostart.sh?ref_type=heads
 
 # My screen resolution
  xrandr --output VGA-1 --mode 1920x1080
