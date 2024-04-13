@@ -1,4 +1,4 @@
--- Default Neovim Config
+-- Default Neovim Config of chad theme
 -- https://nvchad.com/
 require "core"
 
