@@ -1,7 +1,4 @@
 # .config
-My .config files for Arch
-
-# .config
 
 ## Overview
 
